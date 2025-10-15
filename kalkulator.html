@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Üzemanyagköltség Kalkulátor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Üzemanyagköltség Kalkulátor</h1>
+    
+    <nav>
+      <a href="index.html">Főoldal</a>
+      <a href="autok.html">Autólista</a>
+      <a href="kalkulator.html" class="active">Kalkulátor</a>
+    </nav>
+    <div class="theme-toggle" id="themeToggle">
+    <span class="icon">🌙</span>
+    <span class="label">Mód váltás</span>
+    </div>
+  </header>
+
+  <main>
+    <h2>Számold ki az utazás költségét</h2>
+    <label for="km">Megtett távolság (km):</label>
+    <input type="number" id="km" placeholder="pl. 150">
+
+    <label for="fogyasztas">Átlagfogyasztás (liter / 100 km):</label>
+    <input type="number" id="fogyasztas" placeholder="pl. 7.5">
+
+    <label for="ar">Üzemanyag ára (Ft / liter):</label>
+    <input type="number" id="ar" placeholder="pl. 650">
+
+    <button onclick="kiszamitKoltes()">Számítás</button>
+
+    <h3 id="eredmeny"></h3>
+  </main>
+
+  <footer>
+    <p>Készítette: Alex – 2025</p>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+</html>
