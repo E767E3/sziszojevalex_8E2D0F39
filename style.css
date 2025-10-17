@@ -80,8 +80,8 @@ input, button {
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  border: none;
   width: 100%;
+  border: none;
 }
 
 button {
@@ -95,13 +95,13 @@ button:hover {
   background-color: #005fa3;
 }
 
-footer {
-  background-color: #1f1f1f;
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
+#mentes{
+  width: 108%;
 }
+
+
 .hero {
+  border-radius: 10px;
   position: relative;
   height: 60vh;
   background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a');
@@ -137,81 +137,289 @@ footer {
   background-color: #005fa3;
   transform: scale(1.05);
 }
+#autok{
+  float: right;
+}
 #autoLista li {
   opacity: 0;
   transform: translateY(10px);
   animation: fadeIn 0.5s forwards;
 }
-/* === Téma váltó gomb (mindig látható) === */
+/* === Autólista stílus === */
+.car-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.car-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.car-controls input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 200px;
+}
+
+.car-controls button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #0078d7;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.car-controls button:hover {
+  background: #0094ff;
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 900px;
+}
+
+.car-card {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+body.light .car-card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+}
+
+/* === Új autó form === */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+
+#addCarForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+#addCarForm input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+#addCarForm button {
+  background: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#addCarForm button:hover {
+  background: #0094ff;
+}
+
+/* === Téma váltó gomb === */
 .theme-toggle {
   position: fixed;
   top: 20px;
-  right: 20px;
-  background-color: #0078d7;
-  color: white;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  right: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 14px;
+  border-radius: 50px;
   cursor: pointer;
-  overflow: hidden;
   transition: all 0.4s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
-
-.theme-toggle:hover {
-  width: 160px;
-  border-radius: 30px;
-  justify-content: flex-start;
-  padding-left: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
 }
 
 .theme-toggle .icon {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   transition: transform 0.3s ease;
-  flex-shrink: 0;
-}
-
-.theme-toggle:hover .icon {
-  transform: rotate(25deg);
 }
 
 .theme-toggle .label {
-  opacity: 0;
-  margin-left: 10px;
+  margin-left: 8px;
+  font-size: 0.9rem;
   white-space: nowrap;
-  transition: opacity 0.3s ease;
-  font-weight: bold;
-  pointer-events: none;
-}
-
-.theme-toggle:hover .label {
-  opacity: 1;
-}
-
-/* === Világos mód === */
-body.light {
-  background-color: #f5f5f5;
-  color: #111;
-}
-
-body.light header {
-  background-color: #0078d7;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
   color: white;
 }
 
-body.light .card {
-  background-color: #ffffff;
-  color: #111;
+.theme-toggle.expanded {
+  padding-right: 20px;
+}
+
+.theme-toggle.expanded .label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Világos mód színei */
+
+
+
+body.light {
+  background: #f0f0f0;
+  color: black;
+}
+
+body.light .cards{
+  color: white;
+}
+
+
+body.light header {
+  background: #0078d7;
+  color:  white;
 }
 
 body.light .theme-toggle {
-  background-color: #333;
-  color: #f5f5f5;
+  background: rgba(0, 0, 0, 0.15);
 }
+
+body.light .theme-toggle .label {
+  color: #000;
+}
+
+/* Sötét mód alap */
+
+body {
+  background: #121212;
+  color: white;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+
+/* === Kalkulátor középre igazítás === */
+
+.calc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.calc-box {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+body.light .calc-box {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+}
+
+.calc-box select,
+.calc-box input {
+  border: 5px solid black;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.calc-box button {
+  background: #0078d7;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.calc-box button:hover {
+  background: #0094ff;
+}
+
+#calcInputs{
+  width: 95%;
+}
+
+#calcResult {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: opacity 0.5s ease;
+}
+.car-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.car-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.car-card .car-info {
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.car-card h3 {
+  margin: 5px 0;
+  font-size: 1.2rem;
+}
+
+.car-card p {
+  margin: 3px 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+body.light .car-card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+}
+
+body.light .car-card p {
+  color: #333;
+}
+
+
+
 
 
 

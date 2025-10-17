@@ -10,32 +10,38 @@
 <body>
   <header>
     <h1>Autólista</h1>
-    
+
     <nav>
       <a href="index.html">Főoldal</a>
       <a href="autok.html" class="active">Autólista</a>
       <a href="kalkulator.html">Kalkulátor</a>
     </nav>
+
     <div class="theme-toggle" id="themeToggle">
-    <span class="icon">🌙</span>
-    <span class="label">Mód váltás</span>
+      <span class="icon">🌙</span>
+      <span class="label">Sötét mód</span>
     </div>
   </header>
 
   <main>
-    <h2>Autóadatbázis</h2>
-    <input type="text" id="keresesInput" placeholder="Írd be a márkát pl.: BMW">
-    <button onclick="autoKereses()">Keresés</button>
+     
+        <div id="autok">
+      <ul id="autoLista"></ul>
+    </div>
     
-    <ul id="autoLista"></ul>
-    <h3 id="atlagAr"></h3>
+    <section class="car-section">
+      <div class="car-controls">
+        <input type="text" id="carSearch" placeholder="Keresés autóra...">
+        <button onclick="autoKereses()">Keresés</button> 
+        <button id="addCarBtn">➕ Hozzáadás</button>
+        
+        <h3 id="atlagAr"></h3>
+      </div>
+      
+      <div id="carList" class="car-list"></div>
+    </section>
+      
+    
   </main>
-
-
-  <footer>
-    <p>Készítette: Alex – 2025</p>
-  </footer>
-  <script src="script.js"></script>
-
 </body>
 </html>

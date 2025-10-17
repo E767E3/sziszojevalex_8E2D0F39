@@ -16,32 +16,32 @@
       <a href="autok.html">Autólista</a>
       <a href="kalkulator.html" class="active">Kalkulátor</a>
     </nav>
+
     <div class="theme-toggle" id="themeToggle">
-    <span class="icon">🌙</span>
-    <span class="label">Mód váltás</span>
+      <span class="icon">🌙</span>
+      <span class="label">Sötét mód</span>
     </div>
   </header>
 
   <main>
-    <h2>Számold ki az utazás költségét</h2>
-    <label for="km">Megtett távolság (km):</label>
-    <input type="number" id="km" placeholder="pl. 150">
+    <section class="calc-container">
+      <h2>Autós Kalkulátor</h2>
 
-    <label for="fogyasztas">Átlagfogyasztás (liter / 100 km):</label>
-    <input type="number" id="fogyasztas" placeholder="pl. 7.5">
+      <div class="calc-box">
+        <label for="calcType">Válaszd ki a számítást:</label>
+        <select id="calcType">
+          <option value="ar">Út ára</option>
+          <option value="atlag">Átlag fogyasztás</option>
+        </select>
 
-    <label for="ar">Üzemanyag ára (Ft / liter):</label>
-    <input type="number" id="ar" placeholder="pl. 650">
+        <div id="calcInputs"></div>
 
-    <button onclick="kiszamitKoltes()">Számítás</button>
-
-    <h3 id="eredmeny"></h3>
+        <button id="calcBtn">Számítás</button>
+        <div id="calcResult"></div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>Készítette: Alex – 2025</p>
-  </footer>
   <script src="script.js"></script>
-
 </body>
 </html>
