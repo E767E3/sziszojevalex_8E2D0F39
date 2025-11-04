@@ -1,4 +1,3 @@
-// Autólista tömb
 const autok = [
   { marka: "BMW", tipus: "M4", ev: 2023, ar: 35000000 },
   { marka: "Audi", tipus: "RS7", ev: 2022, ar: 40000000 },
@@ -8,12 +7,10 @@ const autok = [
   {}
 ];
 
-// 1️⃣ Üdvözlés függvény
 function udvozles() {
   alert("Üdvözöllek az Autó Infók és Kalkulátor oldalon!");
 }
 
-// 2️⃣ Autólista megjelenítése (betöltéskor)
 window.onload = function() {
   const lista = document.getElementById("autoLista");
   if (lista) {
@@ -25,7 +22,6 @@ window.onload = function() {
   }
 };
 
-// 3️⃣ Keresés funkció
 function autoKereses() {
   const keresett = document.getElementById("keresesInput").value.trim().toLowerCase();
   const lista = document.getElementById("autoLista");
@@ -48,9 +44,7 @@ function autoKereses() {
     lista.appendChild(li);
   }
 }
-// ======== 🚗 AUTÓLISTA KEZELÉS ========
 
-// Ha az autólista oldalon vagyunk
 const carList = document.getElementById("carList");
 const carSearch = document.getElementById("carSearch");
 const addCarBtn = document.getElementById("addCarBtn");
@@ -58,23 +52,18 @@ const addCarBtn = document.getElementById("addCarBtn");
 if (carList) {
   loadCars();
 
-  // Keresés
   carSearch.addEventListener("input", () => {
     loadCars(carSearch.value.toLowerCase());
   });
 
-  // Átirányítás új autó oldalra
   addCarBtn.addEventListener("click", () => {
     window.location.href = "ujauto.html";
   });
 }
 
 function loadCars(filter = "") {
-  // Betöltjük a listát a localStorage-ból
   let cars = JSON.parse(localStorage.getItem("cars")) || [];
   carList.innerHTML = "";
-
-  // Szűrés keresés alapján
   const filtered = cars.filter(
     c =>
       c.brand.toLowerCase().includes(filter) ||
@@ -101,22 +90,15 @@ function loadCars(filter = "") {
     `;
     carList.appendChild(div);
 
-    // Törlés gomb esemény
     const deleteBtn = div.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", () => {
-      // Törlés a cars tömbből
       cars.splice(index, 1);
-      // Mentés localStorage-ba
       localStorage.setItem("cars", JSON.stringify(cars));
-      // Újratöltjük a listát
       loadCars(filter);
     });
   });
 }
 
-
-
-// ======== 📝 ÚJ AUTÓ HOZZÁADÁSA ========
 const addCarForm = document.getElementById("addCarForm");
 if (addCarForm) {
   addCarForm.addEventListener("submit", (e) => {
@@ -134,7 +116,6 @@ if (addCarForm) {
       return;
     }
 
-    // Ha nincs kép megadva → márkához illő automatikus kép
     const defaultImages = {
       bmw: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUcv2W6ItO5XID3ayBZBjmt_mrg4yz1sQokg&s",
       audi: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjF38LPza4RGyHQH6LQ96Piz-4Gzq2fnMWvQ&s",
@@ -159,8 +140,6 @@ if (addCarForm) {
   });
 }
 
-
-// 5️⃣ Átlagár számítás (programozási tétel)
 function atlagArSzamitas() {
   let osszeg = 0;
   for (let i = 0; i < autok.length; i++) {
@@ -171,13 +150,9 @@ function atlagArSzamitas() {
 }
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ======== 🌗 TÉMA VÁLTÁS (SÖTÉT / VILÁGOS MÓD) ========
-
   const themeToggle = document.getElementById("themeToggle");
   const icon = themeToggle.querySelector(".icon");
   const label = themeToggle.querySelector(".label");
-
-  // Mentett téma betöltése
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     document.body.classList.add("light");
@@ -185,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateThemeAppearance();
 
-  // Téma frissítő függvény
   function updateThemeAppearance() {
     if (document.body.classList.contains("light")) {
       icon.textContent = "☀️";
@@ -198,7 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Kattintás esemény — téma váltás
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("light");
     const currentTheme = document.body.classList.contains("light") ? "light" : "dark";
@@ -206,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateThemeAppearance();
   });
 
-  // Hover esemény — animált szétcsúszás
   themeToggle.addEventListener("mouseenter", () => {
     themeToggle.classList.add("expanded");
   });
@@ -214,18 +186,11 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.classList.remove("expanded");
   });
 
-  // =========== innen folytatódhat a kalkulátor kód ===========
-
-
-
-  // ======== 🧮 AUTÓS KALKULÁTOR ========
-
   const calcType = document.getElementById("calcType");
   const calcInputs = document.getElementById("calcInputs");
   const calcBtn = document.getElementById("calcBtn");
   const calcResult = document.getElementById("calcResult");
 
-  // --- Út árának kalkulátor mezők ---
   function loadPriceCalc() {
     calcInputs.innerHTML = `
       <label>Megteendő út hossza (km):</label>
@@ -239,7 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // --- Átlagfogyasztás kalkulátor mezők ---
   function loadAvgCalc() {
     calcInputs.innerHTML = `
       <label>Megtett út (km):</label>
@@ -250,7 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // --- Eredmény animáció ---
   function showResultAnimation(text) {
     calcResult.style.opacity = 0;
     calcResult.textContent = text;
@@ -260,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   }
 
-  // --- Kalkulátor típus váltás ---
   if (calcType) {
     calcType.addEventListener("change", () => {
       calcResult.textContent = "";
@@ -272,7 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Számítás gomb ---
   if (calcBtn) {
     calcBtn.addEventListener("click", () => {
       if (calcType.value === "ar") {
@@ -302,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Oldal betöltésekor alapértelmezett form ---
   if (calcInputs) {
     loadPriceCalc();
   }
